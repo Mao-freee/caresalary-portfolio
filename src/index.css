@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+/*
+  照合台帳 デザインシステム
+  ------------------------------------------------------------------
+  世界観: 帳簿(台帳)と照合(リコンサイル)。介護＝人の温かさ、給与＝精緻さ。
+  署名: 一致 / 差異 / 保留 の3ステータス色を第一級のトークンとして扱い、
+        金額・計算値はすべて等幅(IBM Plex Mono)・タブラー数字で厳密に揃える。
+*/
+
+@theme {
+  /* 面と文字 */
+  --color-paper: #fafaf7; /* 背景：温かみのある紙白 */
+  --color-panel: #ffffff; /* カード面 */
+  --color-panel-2: #f5f4ee; /* 薄いパネル・ゼブラ行 */
+  --color-ink: #16241f; /* 見出し：緑みのある濃墨 */
+  --color-body: #414e49; /* 本文 */
+  --color-muted: #6c7873; /* 補助テキスト */
+  --color-faint: #98a19c; /* さらに弱い補助 */
+  --color-line: #e5e3da; /* ヘアライン */
+  --color-line-strong: #d4d1c5;
+
+  /* ブランド：パイングリーン */
+  --color-brand: #1e5245;
+  --color-brand-700: #163f35;
+  --color-brand-600: #1a473c;
+  --color-brand-100: #d6e4df;
+  --color-brand-50: #eaf1ee;
+
+  /* ステータス：一致 */
+  --color-match: #2e7d5b;
+  --color-match-ink: #1c6343;
+  --color-match-bg: #e8f3ec;
+  --color-match-line: #bfe0cd;
+
+  /* ステータス：差異 */
+  --color-diff: #b9721a;
+  --color-diff-ink: #8a5410;
+  --color-diff-bg: #f8efdd;
+  --color-diff-line: #ecd3a6;
+
+  /* ステータス：保留（人間の判断が必要） */
+  --color-hold: #45568f;
+  --color-hold-ink: #35447b;
+  --color-hold-bg: #ebeef7;
+  --color-hold-line: #c9d1ea;
+
+  /* 書体 */
+  --font-sans: 'IBM Plex Sans JP', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* 角丸 */
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* 影：控えめに */
+  --shadow-card: 0 1px 2px rgba(22, 36, 31, 0.04), 0 6px 20px -12px rgba(22, 36, 31, 0.18);
+  --shadow-lift: 0 2px 4px rgba(22, 36, 31, 0.05), 0 18px 40px -20px rgba(22, 36, 31, 0.28);
+
+  /* コンテナ */
+  --container-page: 72rem;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-feature-settings: 'palt' 1; /* 日本語の詰め */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--color-ink);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-100);
+    color: var(--color-brand-700);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* 金額・計算値はすべてこの指定で等幅かつ桁揃え */
+  .tnum {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+    letter-spacing: -0.01em;
+  }
+
+  /* 台帳の罫線グリッド（ヒーロー背景などに使う淡い方眼） */
+  .ledger-grid {
+    background-image:
+      linear-gradient(to right, rgba(22, 36, 31, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(22, 36, 31, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}

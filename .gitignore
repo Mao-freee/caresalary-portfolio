@@ -1,0 +1,34 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── 実データの誤コミット防止（本リポジトリは架空データのみを扱う） ──
+# 実在の顧客データは置かない。万一追加しても Git の対象外にする。
+*_real.csv
+*_real.xlsx
+/private-data/
+/real-data/
+secrets.*
+.env
+.env.*
