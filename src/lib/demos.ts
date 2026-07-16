@@ -65,7 +65,7 @@ export const demos: Demo[] = [
     roleNote: '決裁者向け',
     tagline: '加算率の改定や採用計画が人件費に与える影響を、その場で試算する。',
     problem: '経営層の意思決定支援／加算率改定インパクトの可視化',
-    status: 'coming',
+    status: 'ready',
   },
 ]
 

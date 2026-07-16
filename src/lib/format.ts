@@ -22,3 +22,8 @@ export function percent(ratio: number, digits = 1): string {
 export function num(n: number): string {
   return Math.round(n).toLocaleString('ja-JP')
 }
+
+/** 12500000 -> "1,250万"（グラフ軸・大きな金額の要約用） */
+export function manYen(n: number): string {
+  return Math.round(n / 10000).toLocaleString('ja-JP') + '万'
+}
