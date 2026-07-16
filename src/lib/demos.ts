@@ -41,7 +41,7 @@ export const demos: Demo[] = [
     roleNote: '横展開・アップセル',
     tagline: 'フォーマットの違う施設データを取り込み、手当と按分を自動で揃える。',
     problem: '施設間フォーマット不統一／按分漏れ／締め日前の業務集中',
-    status: 'coming',
+    status: 'ready',
   },
   {
     n: 3,
