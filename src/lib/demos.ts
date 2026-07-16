@@ -53,7 +53,7 @@ export const demos: Demo[] = [
     roleNote: '信頼性の訴求',
     tagline: '入力値・適用ルール・計算過程を職員単位で残し、引き継ぎ資料にする。',
     problem: '属人化・引き継ぎ不能／監査対応力の不足',
-    status: 'coming',
+    status: 'ready',
   },
   {
     n: 4,

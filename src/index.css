@@ -124,3 +124,19 @@
     background-size: 28px 28px;
   }
 }
+
+/* 印刷（PDF保存）：ナビ・フッターと .no-print を隠し、監査証跡だけを出す */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .print-full {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
