@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { DemoHero } from '../../components/demo/DemoHero'
 import { Container } from '../../components/layout/Container'
 import { StatTile } from '../../components/demo/StatTile'
@@ -243,6 +244,40 @@ export default function ShoguKaizen() {
               </li>
             ))}
           </ul>
+        </Container>
+      </section>
+
+      {/* ── 照合の入口 → 強みはデモ2・3へ ── */}
+      <section className="border-t border-line bg-panel py-12 sm:py-16">
+        <Container>
+          <div className="max-w-2xl">
+            <span className="font-mono text-xs tracking-wider text-brand">照合の入口</span>
+            <h2 className="mt-3 text-xl font-semibold text-ink sm:text-2xl">
+              このデモは、検算のはじめの一歩です
+            </h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted">
+              現行と再計算を突き合わせる基本の形をご覧いただきました。ここから先の「このソフトならではの強み」は、次の2つで実感いただけます。
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {(['teate-tsugo', 'kanshi-shoko'] as const).map((slug) => {
+              const d = demoBySlug(slug)!
+              return (
+                <Link
+                  key={slug}
+                  to={d.path}
+                  className="group rounded-xl border border-line bg-paper p-5 transition hover:-translate-y-0.5 hover:border-line-strong hover:shadow-lift"
+                >
+                  <div className="font-mono text-xs text-brand">DEMO 0{d.n}</div>
+                  <h3 className="mt-1 font-semibold text-ink">{d.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{d.tagline}</p>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-brand group-hover:gap-2.5">
+                    見る <span aria-hidden>→</span>
+                  </span>
+                </Link>
+              )
+            })}
+          </div>
         </Container>
       </section>
 
